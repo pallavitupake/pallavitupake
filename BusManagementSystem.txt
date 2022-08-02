@@ -1,0 +1,89 @@
+import java.io.*;
+import java.lang.*;
+
+class BusManagement
+{
+	BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
+	int no_ti,adu=0,chl=0,sm=0,sf=0,ticket=1000;	
+	
+	String gender;
+	float ttlamt;
+	void getData()
+	{
+		try
+		{
+			System.out.println("Enter The Number Of Tickets ");
+			no_ti=Integer.parseInt(br.readLine());
+			String person[]=new String[no_ti];
+			System.out.println("Whether person Is Child/Adult/Senior/Senior : ");
+			for(int i=0;i<no_ti;i++)
+			{
+			person[i]=br.readLine();
+			if(person[i].equals("Adult")||person[i].equals("adult"))
+			{
+				adu++;
+			}
+			else if(person[i].equals("Child")||person[i].equals("child"))
+			{
+				chl++;
+			}
+			else if(person[i].equals("Senior")||person[i].equals("senior"))
+			{
+				System.out.println("Whether Senior Is Male Or Female : ");
+				gender=br.readLine();
+				if(gender.equals("Male")||gender.equals("male"))
+				{
+					sm++;
+				}
+				else if(gender.equals("Female")||gender.equals("female"))
+				{
+					sf++;
+				}
+			}
+		}
+		}catch(Exception exc){}
+	}
+	void show()
+		{
+		float adamt,chlamt,snrmamt,snrfamt;
+		adamt=(adu*ticket);
+		chlamt=(chl*(ticket/2));
+		snrmamt=(sm*(ticket/2));
+		snrfamt=(sf*(3*ticket/4));
+		ttlamt=adamt+chlamt+snrmamt+snrfamt;
+		if(adu!=0)
+		{
+		System.out.println("Adult :"+adu+"x"+ticket+"="+adamt);
+		}
+		if(chl!=0)
+		{
+		System.out.println("Child :"+chl+"x"+ticket+"="+chlamt);
+		}
+		if(sm!=0)
+		{
+		System.out.println("Senior Male :"+sm+"x"+ticket+"="+snrmamt);
+		}
+		if(sf!=0)
+		{
+		System.out.println("Senior Female :"+sf+"x"+ticket+"="+snrfamt);
+		}
+		System.out.println("Total Ammount You Have To Pay Is : "+ttlamt);
+	
+	}
+}
+class Mini
+{
+	public static void main(String arg[])
+	{
+		
+		//BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
+		//int no_ti;
+
+		System.out.println("Welcome To Bus Management System(Indore-Pune) ");
+	
+			BusManagement e=new BusManagement();
+			e.getData();
+			e.show();
+		
+	}
+}
